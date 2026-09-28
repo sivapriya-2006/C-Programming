@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a number to check for Armstrong: ");
+    if (scanf("%d", &num) != 1) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    int originalNum = num;
+    int temp = num;
+    int digits = 0;
+    int sum = 0;
+
+    // Count the number of digits
+    while (temp != 0) {
+        digits++;
+        temp /= 10;
+    }
+
+    temp = num;
+    // Extract each digit and calculate power manually
+    while (temp != 0) {
+        int remainder = temp % 10;
+        
+        int powerProduct = 1;
+        for (int i = 0; i < digits; i++) {
+            powerProduct *= remainder;
+        }
+        
+        sum += powerProduct;
+        temp /= 10;
+    }
+
+    // Check and print the result
+    if (sum == originalNum) {
+        printf("%d is an Armstrong number.\n", originalNum);
+    } else {
+        printf("%d is NOT an Armstrong number.\n", originalNum);
+    }
+    
+    return 0;
+}
