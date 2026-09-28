@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a positive integer to check for Perfect Number: ");
+    if (scanf("%d", &num) != 1) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    int divisorSum = 0;
+
+    // Reject negative numbers or zero immediately
+    if (num > 0) {
+        // Find all proper divisors up to num/2
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                divisorSum += i;
+            }
+        }
+    }
+
+    // Check and print the result
+    if (num > 0 && divisorSum == num) {
+        printf("%d is a Perfect number.\n", num);
+    } else {
+        printf("%d is NOT a Perfect number.\n", num);
+    }
+
+    return 0;
+}
