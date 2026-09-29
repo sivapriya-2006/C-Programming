@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    char s[] = "swiss";
+    int frequency[256] = {0};
+    int length = 0;
+
+    while (s[length] != '\0') {
+        frequency[(unsigned char)s[length]]++;
+        length++;
+    }
+
+    int foundIndex = -1;
+    for (int i = 0; i < length; i++) {
+        if (frequency[(unsigned char)s[i]] == 1) {
+            foundIndex = i;
+            break;
+        }
+    }
+
+    if (foundIndex != -1) {
+        printf("%c\n", s[foundIndex]);
+    } else {
+        printf("-1\n");
+    }
+
+    return 0;
+}
