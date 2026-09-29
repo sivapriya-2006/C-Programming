@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    char s[] = "programming";
+    int seen[256] = {0};
+    char result[100]; 
+    int i = 0;
+    int resultIndex = 0;
+
+    while (s[i] != '\0') {
+        unsigned char c = s[i];
+        if (seen[c] == 0) {
+            seen[c] = 1;
+            result[resultIndex] = s[i];
+            resultIndex++;
+        }
+        i++;
+    }
+    result[resultIndex] = '\0';
+
+    printf("%s\n", result);
+
+    return 0;
+}
