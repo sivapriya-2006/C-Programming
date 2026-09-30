@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int reverseRecursive(int num, int reversed) {
+    if (num == 0) {
+        return reversed;
+    }
+    return reverseRecursive(num / 10, reversed * 10 + (num % 10));
+}
+
+int main() {
+    int num;
+    printf("Enter a positive integer: ");
+    if (scanf("%d", &num) != 1 || num <= 0) {
+        printf("Please enter a valid positive integer.\n");
+        return 1;
+    }
+    int result = reverseRecursive(num, 0);
+    printf("The reversed integer is: %d\n", result);
+    return 0;
+}
