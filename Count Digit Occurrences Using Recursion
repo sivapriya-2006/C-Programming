@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int countDigitOccurrences(int num, int digit) {
+    if (num == 0) {
+        return 0;
+    }
+    int lastDigit = num % 10;
+    int match = (lastDigit == digit) ? 1 : 0;
+    return match + countDigitOccurrences(num / 10, digit);
+}
+
+int main() {
+    int num, digit;
+    printf("Enter a positive integer: ");
+    if (scanf("%d", &num) != 1 || num <= 0) {
+        printf("Invalid input. Please enter a positive integer.\n");
+        return 1;
+    }
+    printf("Enter the digit to count (0-9): ");
+    if (scanf("%d", &digit) != 1 || digit < 0 || digit > 9) {
+        printf("Invalid digit. Please enter a single digit between 0 and 9.\n");
+        return 1;
+    }
+    int count = countDigitOccurrences(num, digit);
+    printf("The digit %d occurs %d time(s) in %d.\n", digit, count, num);
+    return 0;
+}
