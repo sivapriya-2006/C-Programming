@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int rows = 5; // Number of rows to print
+
+    for (int i = 0; i < rows; i++) {
+        int val = 1;
+        
+        // Print leading spaces for alignment
+        for (int space = 1; space <= rows - i; space++) {
+            printf(" ");
+        }
+        
+        for (int j = 0; j <= i; j++) {
+            printf("%d ", val);
+            val = val * (i - j) / (j + 1); // Calculate next coefficient
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
