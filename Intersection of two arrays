@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+void findIntersection(int arr1[], int n1, int arr2[], int n2) {
+    qsort(arr1, n1, sizeof(int), compare);
+    qsort(arr2, n2, sizeof(int), compare);
+
+    int i = 0, j = 0;
+    int lastPrinted = -1;
+    int isFirst = 1;
+
+    printf("Intersection: [");
+    while (i < n1 && j < n2) {
+        if (arr1[i] < arr2[j]) {
+            i++;
+        } else if (arr1[i] > arr2[j]) {
+            j++;
+        } else {
+            if (isFirst || arr1[i] != lastPrinted) {
+                if (!isFirst) printf(", ");
+                printf("%d", arr1[i]);
+                lastPrinted = arr1[i];
+                isFirst = 0;
+            }
+            i++;
+            j++;
+        }
+    }
+    printf("]\n");
+}
+
+int main() {
+    int arr1[] = {1, 2, 3, 4, 5};
+    int arr2[] = {3, 4, 5, 6, 7};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    findIntersection(arr1, n1, arr2, n2);
+    return 0;
+}
