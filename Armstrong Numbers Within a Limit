@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int limit, i, temp, remainder, digits, sum;
+
+    printf("Enter the upper limit: ");
+    scanf("%d", &limit);
+
+    printf("Armstrong numbers between 1 and %d are:\n", limit);
+
+    for (i = 1; i <= limit; i++) {
+        temp = i;
+        digits = 0;
+        sum = 0;
+
+        // Step 1: Count the number of digits
+        while (temp > 0) {
+            digits++;
+            temp /= 10;
+        }
+
+        temp = i;
+        // Step 2: Compute the sum of digits raised to the power of 'digits'
+        while (temp > 0) {
+            remainder = temp % 10;
+            sum += round(pow(remainder, digits)); // round handles floating-point precision issues
+            temp /= 10;
+        }
+
+        // Step 3: Check if sum equals the original number
+        if (sum == i) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
