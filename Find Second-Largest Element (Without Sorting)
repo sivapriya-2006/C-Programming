@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <limits.h>
+
+int main() {
+    int n, i;
+    
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    if (n < 2) {
+        printf("Array must contain at least two elements.\n");
+        return 1;
+    }
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Initialize largest and second largest to the lowest possible integer value
+    int largest = INT_MIN;
+    int secondLargest = INT_MIN;
+
+    for (i = 0; i < n; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } 
+        // If current element is between largest and second largest
+        else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    if (secondLargest == INT_MIN) {
+        printf("There is no distinct second-largest element.\n");
+    } else {
+        printf("The largest element is: %d\n", largest);
+        printf("The second-largest element is: %d\n", secondLargest);
+    }
+
+    return 0;
+}
