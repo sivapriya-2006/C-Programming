@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+// Helper function to calculate factorial of a digit
+long long getFactorial(int digit) {
+    long long fact = 1;
+    for (int i = 1; i <= digit; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+int main() {
+    int num, originalNum, remainder;
+    long long sum = 0;
+
+    printf("Enter a number to check: ");
+    scanf("%d", &num);
+
+    originalNum = num;
+
+    // Extract each digit and add its factorial to the sum
+    while (num > 0) {
+        remainder = num % 10;
+        sum += getFactorial(remainder);
+        num /= 10;
+    }
+
+    // Check if the calculated sum matches the original input
+    if (sum == originalNum) {
+        printf("%d is a Strong Number.\n", originalNum);
+    } else {
+        printf("%d is NOT a Strong Number.\n", originalNum);
+    }
+
+    return 0;
+}
