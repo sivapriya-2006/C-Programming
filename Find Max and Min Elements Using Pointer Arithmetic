@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    int *ptr = arr; // Base pointer to the array
+
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        // Using pointer arithmetic to read elements
+        scanf("%d", (ptr + i));
+    }
+
+    int max = *ptr;
+    int min = *ptr;
+
+    for (int i = 1; i < n; i++) {
+        int current_val = *(ptr + i);
+        
+        if (current_val > max) {
+            max = current_val;
+        }
+        if (current_val < min) {
+            min = current_val;
+        }
+    }
+
+    printf("\nMaximum element = %d\n", max);
+    printf("Minimum element = %d\n", min);
+
+    return 0;
+}
