@@ -1,0 +1,80 @@
+#include <stdio.h>
+
+// Function Declarations
+void add();
+void subtract();
+void multiply();
+void divide();
+void modulus();
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n--- Menu-Driven Calculator ---\n");
+        printf("1. Addition\n");
+        printf("2. Subtraction\n");
+        printf("3. Multiplication\n");
+        printf("4. Division\n");
+        printf("5. Modulus\n");
+        printf("6. Exit\n");
+        printf("Enter your choice (1-6): ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: add(); break;
+            case 2: subtract(); break;
+            case 3: multiply(); break;
+            case 4: divide(); break;
+            case 5: modulus(); break;
+            case 6: printf("Exiting the program. Thank you!\n"); break;
+            default: printf("Invalid choice! Please select between 1 and 6.\n");
+        }
+    } while (choice != 6);
+
+    return 0;
+}
+
+// Function Definitions
+void add() {
+    double a, b;
+    printf("Enter two numbers to add: ");
+    scanf("%lf %lf", &a, &b);
+    printf("Result: %.2lf\n", a + b);
+}
+
+void subtract() {
+    double a, b;
+    printf("Enter two numbers to subtract (First - Second): ");
+    scanf("%lf %lf", &a, &b);
+    printf("Result: %.2lf\n", a - b);
+}
+
+void multiply() {
+    double a, b;
+    printf("Enter two numbers to multiply: ");
+    scanf("%lf %lf", &a, &b);
+    printf("Result: %.2lf\n", a * b);
+}
+
+void divide() {
+    double a, b;
+    printf("Enter numerator and denominator: ");
+    scanf("%lf %lf", &a, &b);
+    if (b != 0) {
+        printf("Result: %.4lf\n", a / b);
+    } else {
+        printf("Error: Division by zero is undefined!\n");
+    }
+}
+
+void modulus() {
+    int a, b;
+    printf("Enter two integers for modulus (First %% Second): ");
+    scanf("%d %d", &a, &b);
+    if (b != 0) {
+        printf("Result: %d\n", a % b);
+    } else {
+        printf("Error: Division by zero (modulus) is undefined!\n");
+    }
+}
