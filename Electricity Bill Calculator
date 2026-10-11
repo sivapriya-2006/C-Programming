@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    float units, total_bill = 0;
+
+    printf("Enter the total units consumed: ");
+    scanf("%f", &units);
+
+    // Assuming a standard tiered tariff slab structure
+    if (units <= 100) {
+        total_bill = units * 1.50; // Slab 1
+    } 
+    else if (units <= 300) {
+        total_bill = (100 * 1.50) + ((units - 100) * 2.50); // Slab 2
+    } 
+    else if (units <= 500) {
+        total_bill = (100 * 1.50) + (200 * 2.50) + ((units - 300) * 4.00); // Slab 3
+    } 
+    else {
+        total_bill = (100 * 1.50) + (200 * 2.50) + (200 * 4.00) + ((units - 500) * 6.00); // Slab 4
+    }
+
+    // Optional: Adding a fixed minimum charge if units are very low
+    if (total_bill < 50) {
+        total_bill = 50; 
+    }
+
+    printf("Total Electricity Bill: Rs. %.2f\n", total_bill);
+
+    return 0;
+}
